@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/minitreats.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Orders | Sweet Crumbs Bakery</title>
+</head>
+
+<style>
+    button {
+    background-color: #add8e6;
+    color: #000;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #87ceeb; 
+    transform: scale(1.05); 
+}
+
+.checkout-btn {
+    display: inline-block;
+    background-color: #add8e6;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #87ceeb;
+}
+
+    .cart-sidebar {
+        width: 250px;
+        height: 400px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        position: absolute; 
+        top: 300px; 
+        right: 200px;
+        border-radius: 8px;
+        overflow-y: auto;
+        z-index: 1000;
+        transition: opacity 0.3s, visibility 0.3s;
+        opacity: 1;
+        visibility: visible;
+    }
+    .cart-sidebar.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .cart-sidebar h2 {
+        font-size: 16px;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+    .cart-items {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .cart-item span {
+        font-size: 14px;
+    }
+    .cart-sidebar .total {
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .checkout-form {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .checkout-form input,
+    .checkout-form button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+    .checkout-form button {
+        background-color: #f07a42;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>🎂 Sweet Crumbs Bakery: Custom Orders 🧁</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cakebycam.html">Cakes</a></li>
+                <li><a href="Milkshakes.html">Milkshakes</a></li>
+                <li><a href="Minitreats.html">Minitreats</a></li>
+				<li><a href="pies.html">Pies</a></li>
+                <li><a href="PolishDessert.html">Polish Desserts</a></li>
+                <li><a href="Custom.html">Custom Orders</a></li>
+            </ul>
+        </nav>
+        <p>Create Your Dream Dessert or Treat!</p>
+    </header>
+
+    <section class="section">
+        <h2>Small Treats</h2>
+        <div class="treat-options">
+            <div class="treat-item">
+                <img src="images/crispyrice.jpg" alt="crispyrice" style="width:100%; height:40%;">
+                <h3>Rice Crispy Cakes</h3>
+                <p>Classic and chocolate varieties available</p>
+                <p>Price: £12 per dozen</p>
+                <button class="add-to-cart" data-name="Rice Crispy Cakes" data-price="12">Add to Cart</button>
+            </div>
+            <div class="treat-item">
+                <img src="images/minibrownie.jpg" alt="minibrownie" style="width:100%; height:40%;">
+                <h3>🟫Brownies🟫</h3>
+                <p>Rich and fudgy, customizable with nuts or toppings</p>
+                <p>Price: £18 per dozen</p>
+                <button class="add-to-cart" data-name="Brownies" data-price="18">Add to Cart</button>
+            </div>
+            <div class="treat-item">
+                <img src="images/minichocolatecupcakes.jpg" alt="minichocolatecupcakes" style="width:100%; height:40%;">
+                <h3>🧁Cupcakes🧁</h3>
+                <p>Available in various flavors with custom decorations</p>
+                <p>Price: £24 per dozen</p>
+                <button class="add-to-cart" data-name="Cupcakes" data-price="24">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Special Small treats</h2>
+        <div class="treat-options">
+            <div class="treat-item">
+                <img src="images/cookies.jpg" alt="cookies" style="width:100%; height:40%;">
+                <h3>🍪Cookies🍪</h3>
+                <p>with a choice of milk or white chocolate very tasty</p>
+                <p>starting at £20 per dosen</p>
+                <button class="add-to-cart" data-name="Cookies" data-price="20">Add to Cart</button>
+            </div>
+            <div class="treat-item">
+                <img src="images/minidoughnuts.jpg" alt="minidoughnuts" style="width:100%; height:40%;">
+                <h3>🍩Mini donuts🍩</h3>
+                <p>sweet glazed donuts comes in a variety of flavours</p>
+                <p>£24 per dozen of doughnuts</p>
+                <button class="add-to-cart" data-name="Mini donuts" data-price="24">Add to Cart</button>
+            </div>
+            <div class="treat-item">
+                <img src="images/macarons.jpg" alt="macarons" style="width:100%; height:40%;">
+                <h3>Macarons</h3>
+                <p>Delicate French macarons in a variety of flavors and colors.</p>
+                <p>a dozen for £14 pounds</p>
+                <button class="add-to-cart" data-name="Macarons" data-price="14">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <h2>Your Cart</h2>
+        <ul class="cart-items">
+            
+        </ul>
+        <div class="total">Total: £<span id="cart-total">0.00</span></div>
+        <div class="checkout-link">
+            <a href="checkout.html" class="checkout-btn">Place Order</a>
+        </div>
+    </div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    function updateCart() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
+
+            const cartItem = document.createElement('li');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <span>${item.name} x${item.quantity}</span>
+                <span>£${(item.price * item.quantity).toFixed(2)}</span>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function addToCart(name, price) {
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({ name, price: parseFloat(price), quantity: 1 });
+        }
+        updateCart();
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const name = button.getAttribute('data-name');
+            const price = button.getAttribute('data-price');
+            addToCart(name, price);
+        });
+    });
+
+    
+    updateCart();
+</script>
+
+</body>
+</html>

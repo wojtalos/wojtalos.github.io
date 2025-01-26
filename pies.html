@@ -1,0 +1,215 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/pies.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Orders | Sweet Crumbs Bakery</title>
+</head>
+
+<style>
+    button {
+    background-color: #add8e6;
+    color: #000;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #87ceeb; 
+    transform: scale(1.05); 
+}
+
+.checkout-btn {
+    display: inline-block;
+    background-color: #add8e6;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #87ceeb;
+}
+
+    .cart-sidebar {
+        width: 250px;
+        height: 400px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        position: absolute; 
+        top: 300px; 
+        right: 200px;
+        border-radius: 8px;
+        overflow-y: auto;
+        z-index: 1000;
+        transition: opacity 0.3s, visibility 0.3s;
+        opacity: 1;
+        visibility: visible;
+    }
+    .cart-sidebar.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .cart-sidebar h2 {
+        font-size: 16px;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+    .cart-items {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .cart-item span {
+        font-size: 14px;
+    }
+    .cart-sidebar .total {
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .checkout-form {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .checkout-form input,
+    .checkout-form button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+    .checkout-form button {
+        background-color: #f07a42;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>🎂 Custom Orders at Sweet Crumbs Bakery 🧁</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cakebycam.html">Cakes</a></li>
+                <li><a href="Milkshakes.html">Milkshakes</a></li>
+                <li><a href="Minitreats.html">Minitreats</a></li>
+				<li><a href="pies.html">Pies</a></li>
+                <li><a href="PolishDessert.html">Polish Desserts</a></li>
+                <li><a href="Custom.html">Custom Orders</a></li>
+            </ul>
+        </nav>
+        <p>Create Your Dream Dessert!</p>
+    </header>
+
+    <section class="custom-order-section">
+        <h2>Sweet Pies</h2>
+        <div class="pie-options">
+            <div class="pie-type">
+                <img src="images/applepie.jpg" alt="applepie" style="width:100%; height:38%;">
+                <h3>Apple Pie</h3>
+                <p>Classic cinnamon-spiced apple filling</p>
+                <p>Price: £25</p>
+                <button class="add-to-cart" data-name="Apple Pie" data-price="25">Add to Cart</button>
+            </div>
+            <div class="pie-type">
+                <img src="images/pumpkinpie.jpg" alt="pumpkinpie" style="width:100%; height:38%;">
+                <h3>Pumpkin Pie</h3>
+                <p>Perfectly spiced pumpkin with a flaky crust</p>
+                <p>Price: £30</p>
+                <button class="add-to-cart" data-name="Pumpkin Pie" data-price="30">Add to Cart</button>
+            </div>
+            <div class="pie-type">
+                <img src="images/pecanpie.jpg" alt="pecanpie" style="width:100%; height:38%;">
+                <h3>Pecan Pie</h3>
+                <p>Rich, nutty filling with a hint of caramel</p>
+                <p>Price: £35</p>
+                <button class="add-to-cart" data-name="Pecan Pie" data-price="35">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <h2>Your Cart</h2>
+        <ul class="cart-items">
+            
+        </ul>
+        <div class="total">Total: £<span id="cart-total">0.00</span></div>
+        <div class="checkout-link">
+            <a href="checkout.html" class="checkout-btn">Place Order</a>
+        </div>
+    </div>
+    
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartTotal = document.getElementById('cart-total');
+    
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+    
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>£${(item.price * item.quantity).toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+    
+            cartTotal.textContent = total.toFixed(2);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price: parseFloat(price), quantity: 1 });
+            }
+            updateCart();
+        }
+    
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+    
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = button.getAttribute('data-price');
+                addToCart(name, price);
+            });
+        });
+    
+        
+        updateCart();
+    </script>
+
+</body></html>

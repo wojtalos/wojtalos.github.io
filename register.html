@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sweet Crumbs Bakery</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="icon" type="image/x-icon" href="/bread-favicon.ico">
+    <meta name="description" content="Create an account at Sweet Crumbs Bakery to enjoy exclusive benefits and order tracking.">
+    <style>
+        /* General styles matching your layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff5e6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f9c74f;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #8a5a2e;
+            font-weight: bold;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #8a5a2e;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #8a5a2e;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #e9d5c3;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            background-color: #add8e6;
+            color: #000;
+            border: 1px solid #87ceeb;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #87ceeb;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #8a5a2e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🥖 Sweet Crumbs Bakery 🥐</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cakebycam.html">Cakes</a></li>
+                <li><a href="Milkshakes.html">Milkshakes</a></li>
+                <li><a href="Minitreats.html">Minitreats</a></li>
+                <li><a href="pies.html">Pies</a></li>
+                <li><a href="PolishDessert.html">Polish Desserts</a></li>
+                <li><a href="Custom.html">Custom Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Register an Account</h2>
+        <p>Join Sweet Crumbs Bakery for exclusive offers and order tracking!</p>
+            <form id="register-form" action="register.php" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+    </main>
+
+    <footer>
+        <p>© 2024 Sweet Crumbs Bakery | 123 Flour Street, Breadtown</p>
+        <p>📞 (555) BREAD-YUM | 📧 support@sweetcrumbs.com</p>
+    </footer>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+            } else {
+                alert('Thank you for registering! Welcome to Sweet Crumbs Bakery.');
+            }
+        });
+    </script>
+</body>
+</html>
