@@ -238,7 +238,7 @@ form textarea {
     color: gold;
 }
 
-@media (min-width: 100px) and (max-width: 2000px) {
+@media (min-width: 100px) and (max-width: 1400px) {
     .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
