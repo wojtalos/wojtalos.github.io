@@ -311,7 +311,7 @@ button:hover {
     visibility: hidden;
 }
 
-@media (min-width: 100px) and (max-width: 1700px) {
+@media (min-width: 100px) and (max-width: 1400px) {
     .cart-sidebar {
         display: none;
     }
