@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <p>Review your order and complete your purchase!</p>
+    </header>
+
+    <main>
+        <section id="checkout">
+            <h2>Your Order</h2>
+            <table id="checkout-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
+                        <td id="cart-total">£0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="checkout-actions">
+                <button id="confirm-order-btn" class="light-blue-btn">Confirm Order</button>
+                <a href="index.html" class="light-blue-btn">Return to Menu</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 sweetcrumbs | 456 Sweet Lane, Dessertville</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const confirmOrderBtn = document.getElementById('confirm-order-btn');
+
+            if (!cartItemsContainer || !cartTotal || !confirmOrderBtn) {
+                console.error('Required DOM elements not found');
+                return;
+            }
+
+            let cart = [];
+            try {
+                const storedCart = localStorage.getItem('cart');
+                cart = storedCart ? JSON.parse(storedCart) : [];
+            } catch (error) {
+                console.error('Error parsing cart from localStorage:', error);
+                cart = [];
+            }
+
+            function updateCartTable() {
+                let total = 0;
+                cartItemsContainer.innerHTML = ''; // Clear current table
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<tr><td colspan="4">No items in your cart.</td></tr>';
+                } else {
+                    cart.forEach(item => {
+                        if (!item.name || typeof item.price !== 'number' || typeof item.quantity !== 'number') {
+                            console.warn('Invalid cart item:', item);
+                            return;
+                        }
+                        const subtotal = item.quantity * item.price;
+                        total += subtotal;
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.name}</td>
+                            <td>${item.quantity}</td>
+                            <td>£${item.price.toFixed(2)}</td>
+                            <td>£${subtotal.toFixed(2)}</td>
+                        `;
+                        cartItemsContainer.appendChild(row);
+                    });
+                }
+                cartTotal.textContent = `£${total.toFixed(2)}`;
+            }
+
+            updateCartTable();
+
+            confirmOrderBtn.addEventListener('click', () => {
+                alert('Thank you for your order! Your desserts will be prepared soon.');
+                localStorage.removeItem('cart');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

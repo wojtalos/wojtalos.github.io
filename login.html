@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sweet Crumbs Bakery</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" type="image/x-icon" href="/bread-favicon.ico">
+    <meta name="description" content="Log in to your Sweet Crumbs Bakery account to access exclusive features and order tracking.">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff5e6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f9c74f;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #8a5a2e;
+            font-weight: bold;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #8a5a2e;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #8a5a2e;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #e9d5c3;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            background-color: #add8e6;
+            color: #000;
+            border: 1px solid #87ceeb;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #87ceeb;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #8a5a2e;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🥖 Sweet Crumbs Bakery 🥐</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cakebycam.html">Cakes</a></li>
+            <li><a href="Milkshakes.html">Milkshakes</a></li>
+            <li><a href="Minitreats.html">Minitreats</a></li>
+            <li><a href="pies.html">Pies</a></li>
+            <li><a href="PolishDessert.html">Polish Desserts</a></li>
+            <li><a href="cheesecakes.html">Cheesecakes</a></li>
+            <li><a href="Custom.html">Custom Orders</a></li>
+            <li><a href="register.html">login or make account</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Login to Your Account</h2>
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        
+        <label for="security-question">Two-Factor Authentication:</label>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <select id="security-question" name="security-question" required>
+                <option value="" disabled selected>Select a question</option>
+                <option value="mother-maiden-name">Mother's maiden name</option>
+                <option value="first-pet-name">First pet's name</option>
+                <option value="first-street-name">First street name</option>
+            </select>
+            <input type="text" id="security-answer" name="security-answer" placeholder="Your answer" required>
+        </div>
+        
+        <button type="submit" class="submit-btn">Login</button>
+    </form>
+</main>
+
+<footer>
+    <p>© 2024 Sweet Crumbs Bakery | 123 Flour Street, Breadtown</p>
+</footer>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const securityAnswer = document.getElementById('security-answer').value;
+        const securityChoice = document.getElementById('security-question').value;
+
+        const loginData = {
+            action: 'verify',
+            user_name: username,
+            email_address: email,
+            password: password,
+            f2a_answer: securityAnswer,
+            f2a_choice: securityChoice
+        };
+
+        try {
+            const response = await fetch('https://de74n7wyw2.execute-api.eu-north-1.amazonaws.com/transfer/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.authenticated) {
+                document.cookie = `username=${username}; path=/; SameSite=Lax; Secure`;
+                window.location.href = 'index.html'; 
+            } else {
+                alert('Login failed. Please check your credentials and try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('There was an error logging in. Please try again later.');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minitreats</title>
+    <link rel="stylesheet" href="css/minitreats.css">
+    <link rel="icon" type="image/x-icon" href="/dessert-favicon.ico">
+    <meta name="description" content="cant make up your mind? why not try a slection of mini treats!">
+</head>
+
+<style>
+    button {
+    background-color: #add8e6;
+    color: #000;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #87ceeb;
+    transform: scale(1.05);
+}
+
+.checkout-btn {
+    display: inline-block;
+    background-color: #add8e6;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #87ceeb;
+}
+
+    .cart-sidebar {
+        width: 250px;
+        height: 400px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        position: absolute; 
+        top: 300px; 
+        right: 200px;
+        border-radius: 8px;
+        overflow-y: auto;
+        z-index: 1000;
+        transition: opacity 0.3s, visibility 0.3s;
+        opacity: 1;
+        visibility: visible;
+    }
+    .cart-sidebar.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .cart-sidebar h2 {
+        font-size: 16px;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+    .cart-items {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .cart-item span {
+        font-size: 14px;
+    }
+    .cart-sidebar .total {
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .checkout-form {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .checkout-form input,
+    .checkout-form button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+    .checkout-form button {
+        background-color: #f07a42;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>🎂 Sweet Crumbs Bakery: mini treats 🧁</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cakebycam.html">Cakes</a></li>
+                <li><a href="Milkshakes.html">Milkshakes</a></li>
+                <li><a href="Minitreats.html">Minitreats</a></li>
+				<li><a href="pies.html">Pies</a></li>
+                <li><a href="PolishDessert.html">Polish Desserts</a></li>
+                <li><a href="cheesecakes.html">Cheesecakes</a></li>
+                <li><a href="Custom.html">Custom Orders</a></li>
+                <li><a href="register.html">login or make account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Hello u looking to snack on some mini treats</h2>
+            <p>cant make up your mind, try a selction of mini treats with not so mini flavours!</p>
+        </section>
+
+        <section id="menu">
+    <h2>Have a look at out mini treats</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/crispyrice.jpg" alt="crispyrice" style="width:100%">
+            <h3>crispyrice</h3>
+            <p>perfict for dipping in any sauce or a helthy plallet clenser</p>
+            <p>Price: £12 per dozen</p>
+            <button class="add-to-cart" data-name="crispyrice" data-price="12">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/minibrownie.jpg" alt="mini brownie" style="width:100%">
+            <h3>Mini Brownie</h3>
+            <p>Fluffy, rich and gooie wall u could want in a single bite</p>
+            <p>Price: £18 per dozen</p>
+            <button class="add-to-cart" data-name="brownie" data-price="18">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/macarons.jpg" alt="macarons" style="width:100%">
+            <h3>macarons</h3>
+            <p>here is the best snack for viritey in a box it incleds vinila,choclet,raspberry all to snack on </p>
+            <p>Price: £29 per box</p>
+            <button class="add-to-cart" data-name="macarons" data-price="29">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 minitreats | 456 Sweet Lane, Dessertville</p>
+        <p>📞 (555) SWEET-TREAT | 📧 orders@minitreats.com</p>
+    </footer>
+
+<a href="checkout.html" class="cart-button" id="cart-toggle-btn">Cart (0)</a>
+<div class="cart-sidebar" id="cart-sidebar">
+    <h2>Your Cart</h2>
+    <ul class="cart-items"></ul>
+    <div class="total">Total: £<span id="cart-total">0.00</span></div>
+    <div class="checkout-link">
+        <a href="checkout.html" class="checkout-btn">Place Order</a>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let cart = [];
+    try {
+        const storedCart = localStorage.getItem('cart');
+        cart = storedCart ? JSON.parse(storedCart) : [];
+    } catch (error) {
+        console.error('Error parsing cart from localStorage:', error);
+        cart = [];
+    }
+
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartToggleBtn = document.getElementById('cart-toggle-btn');
+
+    if (!cartItemsContainer || !cartTotal || !cartSidebar || !cartToggleBtn) {
+        console.error('Required DOM elements not found');
+        return;
+    }
+
+    function updateCart() {
+        try {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let itemCount = 0;
+
+            cart.forEach((item, index) => {
+                if (!item.price || !item.quantity) {
+                    console.warn('Invalid cart item:', item);
+                    return;
+                }
+                total += item.price * item.quantity;
+                itemCount += item.quantity; // Sum the quantities for the item count
+
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>£${(item.price * item.quantity).toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+            cartToggleBtn.textContent = `Cart (${itemCount})`; // Update button text with item count
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } catch (error) {
+            console.error('Error updating cart:', error);
+        }
+    }
+
+    window.removeFromCart = function(index) {
+        try {
+            cart.splice(index, 1);
+            updateCart();
+        } catch (error) {
+            console.error('Error removing item from cart:', error);
+        }
+    };
+
+    function addToCart(name, price) {
+        try {
+            const priceValue = parseFloat(price);
+            if (isNaN(priceValue)) {
+                throw new Error('Invalid price value');
+            }
+
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price: priceValue, quantity: 1 });
+            }
+            updateCart();
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+        }
+    }
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    if (addToCartButtons.length === 0) {
+        console.warn('No add-to-cart buttons found');
+    }
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const name = button.getAttribute('data-name');
+            const price = button.getAttribute('data-price');
+            if (!name || !price) {
+                console.error('Button missing data attributes:', button);
+                return;
+            }
+            addToCart(name, price);
+        });
+    });
+
+    updateCart();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pies"</title>
+    <link rel="stylesheet" href="css/pies.css">
+    <link rel="icon" type="image/x-icon" href="/dessert-favicon.ico">
+    <meta name="description" content="u looking for a fresh warm dessert look no further">
+</head>
+<body>
+    <header>
+        <h1>pies</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cakebycam.html">Cakes</a></li>
+                <li><a href="Milkshakes.html">Milkshakes</a></li>
+                <li><a href="Minitreats.html">Minitreats</a></li>
+				<li><a href="pies.html">Pies</a></li>
+                <li><a href="PolishDessert.html">Polish Desserts</a></li>
+                <li><a href="cheesecakes.html">Cheesecakes</a></li>
+                <li><a href="Custom.html">Custom Orders</a></li>
+                <li><a href="register.html">login or make account</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+<style>
+        button {
+    background-color: #add8e6;
+    color: #000;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #87ceeb;
+    transform: scale(1.05);
+}
+
+.checkout-btn {
+    display: inline-block;
+    background-color: #add8e6;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #87ceeb;
+}
+
+    .cart-sidebar {
+        width: 250px;
+        height: 400px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        position: absolute; 
+        top: 300px; 
+        right: 200px;
+        border-radius: 8px;
+        overflow-y: auto;
+        z-index: 1000;
+        transition: opacity 0.3s, visibility 0.3s;
+        opacity: 1;
+        visibility: visible;
+    }
+    .cart-sidebar.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .cart-sidebar h2 {
+        font-size: 16px;
+        margin: 0 0 10px;
+        text-align: center;
+    }
+    .cart-items {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .cart-item span {
+        font-size: 14px;
+    }
+    .cart-sidebar .total {
+        font-weight: bold;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .checkout-form {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .checkout-form input,
+    .checkout-form button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 12px;
+        box-sizing: border-box;
+    }
+    .checkout-form button {
+        background-color: #f07a42;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+    
+    <main>
+        <section id="home">
+            <h2>hey, are you looking for somthing warm and filling look no further then our filled pies</h2>
+            <p>nothing beats a fresh warm pie with the best filling! from the fresh ingredients to the warmth of the filling.</p>
+        </section>
+
+        <section id="menu">
+    <h2>Pies</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/applepie.jpg" alt="apple pies" style="width:100%; height:40%;">
+            <h3>Apple pie</h3>
+            </p>are u in the mood to feel the warmth of a cinimon applepie then u have found it </p>
+            <p>Price: £25 per pie</p>
+            <button class="add-to-cart" data-name="apple pie" data-price="25">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/pecanpie.jpg" alt="pecanpie" style="width:100%; height:40%;">
+            <h3>pecanpie</h3>
+            <p>why not try our pecanpie sweet as can be</p>
+            <p>Price: £25 per pie</p>
+            <button class="add-to-cart" data-name="pecanpie" data-price="25">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/pumpkinpie.jpg" alt="pumpkinpie" style="width:100%; height:40%;">
+            <h3>pumpkinpie</h3>
+            <p>here we have a all natural pumpkinpie with nothing but the best ingredients</p>
+            <p>Price: £25 per pie</p>
+            <button class="add-to-cart" data-name="pumpkinpie" data-price="25">Add to Cart</button>
+        
+        </div>
+        
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 cheescakes | 456 Sweet Lane, Dessertville</p>
+        <p>📞 (555) SWEET-TREATY | 📧 orders@cpies.com</p>
+    </footer>
+
+    <script>
+        // Simple form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your custom order request! We will be in touch soon.');
+        });
+    </script>
+
+    <section id="reviews-section">
+        <h2>Customer Reviews</h2>
+        <form id="review-form">
+            <label for="review-name">Your Name:</label>
+            <input type="text" id="review-name" name="review-name" placeholder="Enter your name" required>
+            
+            <label for="review-rating">Rating:</label>
+            <div id="star-rating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <input type="hidden" id="rating-value" name="rating-value" required>
+            
+            <label for="review-comment">Your Comment:</label>
+            <textarea id="review-comment" name="review-comment" placeholder="Write your review here" required></textarea>
+            
+            <button type="submit">Submit Review</button>
+        </form>
+        
+        <h3>All Reviews</h3>
+        <ul id="reviews-list"></ul>
+    </section>
+
+    <script>
+        const reviewsList = document.getElementById('reviews-list');
+        const reviewForm = document.getElementById('review-form');
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('rating-value');
+
+        // Load saved reviews from localStorage
+        function loadReviews() {
+            const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            reviewsList.innerHTML = '';
+            savedReviews.forEach(review => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${review.name}</strong> (${review.rating} ★): ${review.comment}`;
+                reviewsList.appendChild(li);
+            });
+        }
+
+        // Handle star rating selection
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                ratingValue.value = star.dataset.value;
+                stars.forEach(s => s.style.color = s.dataset.value <= star.dataset.value ? 'gold' : 'grey');
+            });
+        });
+
+        // Handle review form submission
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value;
+            const rating = ratingValue.value;
+            const comment = document.getElementById('review-comment').value;
+
+            const newReview = { name, rating, comment };
+
+            // Save review to localStorage
+            const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            savedReviews.push(newReview);
+            localStorage.setItem('reviews', JSON.stringify(savedReviews));
+
+            // Reset form and reload reviews
+            reviewForm.reset();
+            stars.forEach(s => s.style.color = 'grey');
+            loadReviews();
+        });
+
+        // Initialise reviews on page load
+        loadReviews();
+    </script>
+
+<!-- Existing HTML up to before the cart sidebar -->
+<a href="checkout.html" class="cart-button" id="cart-toggle-btn">Cart (0)</a>
+<div class="cart-sidebar" id="cart-sidebar">
+    <h2>Your Cart</h2>
+    <ul class="cart-items"></ul>
+    <div class="total">Total: £<span id="cart-total">0.00</span></div>
+    <div class="checkout-link">
+        <a href="checkout.html" class="checkout-btn">Place Order</a>
+    </div>
+</div>
+<!-- Rest of the existing HTML -->
+
+<!-- Updated script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let cart = [];
+    try {
+        const storedCart = localStorage.getItem('cart');
+        cart = storedCart ? JSON.parse(storedCart) : [];
+    } catch (error) {
+        console.error('Error parsing cart from localStorage:', error);
+        cart = [];
+    }
+
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartToggleBtn = document.getElementById('cart-toggle-btn');
+
+    if (!cartItemsContainer || !cartTotal || !cartSidebar || !cartToggleBtn) {
+        console.error('Required DOM elements not found');
+        return;
+    }
+
+    function updateCart() {
+        try {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let itemCount = 0;
+
+            cart.forEach((item, index) => {
+                if (!item.price || !item.quantity) {
+                    console.warn('Invalid cart item:', item);
+                    return;
+                }
+                total += item.price * item.quantity;
+                itemCount += item.quantity; // Sum the quantities for the item count
+
+                const cartItem = document.createElement('li');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>£${(item.price * item.quantity).toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+            cartToggleBtn.textContent = `Cart (${itemCount})`; // Update button text with item count
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } catch (error) {
+            console.error('Error updating cart:', error);
+        }
+    }
+
+    window.removeFromCart = function(index) {
+        try {
+            cart.splice(index, 1);
+            updateCart();
+        } catch (error) {
+            console.error('Error removing item from cart:', error);
+        }
+    };
+
+    function addToCart(name, price) {
+        try {
+            const priceValue = parseFloat(price);
+            if (isNaN(priceValue)) {
+                throw new Error('Invalid price value');
+            }
+
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price: priceValue, quantity: 1 });
+            }
+            updateCart();
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+        }
+    }
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    if (addToCartButtons.length === 0) {
+        console.warn('No add-to-cart buttons found');
+    }
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const name = button.getAttribute('data-name');
+            const price = button.getAttribute('data-price');
+            if (!name || !price) {
+                console.error('Button missing data attributes:', button);
+                return;
+            }
+            addToCart(name, price);
+        });
+    });
+
+    updateCart();
+});
+</script>
+
+
+</body>
+</html>
