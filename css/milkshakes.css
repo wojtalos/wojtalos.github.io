@@ -263,7 +263,7 @@ form textarea {
     visibility: hidden;
 }
 
-@media (min-width: 100px) and (max-width: 2000px) {
+@media (min-width: 100px) and (max-width: 1700px) {
     .cart-sidebar {
         display: none;
     }
