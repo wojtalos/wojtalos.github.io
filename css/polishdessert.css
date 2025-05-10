@@ -163,7 +163,7 @@ main {
     visibility: hidden;
 }
 
-@media (min-width: 700px) and (max-width: 1700px) {
+@media (min-width: 700px) and (max-width: 1600px) {
     .cart-sidebar {
         display: none;
     }
