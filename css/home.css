@@ -372,7 +372,7 @@ button:hover {
     background-color: #87ceeb;
 }
 
-@media (min-width: 100px) and (max-width: 1800px) {
+@media (min-width: 100px) and (max-width: 1700px) {
     .cart-sidebar {
         display: none;
     }
