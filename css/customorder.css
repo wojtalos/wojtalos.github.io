@@ -96,3 +96,61 @@ form textarea {
 .submit-btn:hover {
     background-color: #f7b83d;
 }
+
+@media (max-width: 1280px) {
+    nav ul {
+        gap: 10px; /* Reduce gap to fit more items */
+        flex-wrap: wrap; /* Allow wrapping if needed */
+    }
+    nav a {
+        padding: 5px 8px; /* Slightly reduce padding for better fit */
+        font-size: 14px; /* Slightly smaller font for readability */
+    }
+}
+
+/* Navigation Adjustments for Mobile (768px and below) */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack items vertically */
+        gap: 5px; /* Smaller gap for vertical layout */
+        align-items: center; /* Center-align items */
+    }
+    nav a {
+        padding: 10px 15px; /* Larger padding for better tap targets */
+        font-size: 16px; /* Larger font for readability */
+        display: block; /* Ensure full-width tap area */
+    }
+    nav li {
+        width: 100%; /* Full width for each item */
+        text-align: center; /* Center text */
+    }
+}
+
+/* Existing styles for .cart-button, .cart-sidebar, etc., remain unchanged */
+
+/* Existing media query for other elements at max-width: 768px */
+@media (max-width: 768px) {
+    .cake-options,
+    .product-grid {
+        gap: 10px;
+    }
+    .cake-type {
+        width: 200px;
+        height: 300px;
+    }
+    .product-card {
+        width: 180px;
+    }
+    .basket {
+        top: 50px;
+    }
+    body {
+        padding: 10px;
+    }
+    .cart-sidebar {
+        display: none;
+    }
+    .cart-button {
+        display: block;
+    }
+}

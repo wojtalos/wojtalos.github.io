@@ -163,7 +163,7 @@ main {
     visibility: hidden;
 }
 
-@media (min-width: 100px) and (max-width: 1400px){
+@media (min-width: 100px) and (max-width: 1700px) {
     .cart-sidebar {
         display: none;
     }
@@ -189,5 +189,60 @@ main {
     }
     .submit-btn {
         width: 100%;
+    }
+}
+
+@media (max-width: 1280px) {
+    nav ul {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    nav a {
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+    nav a {
+        padding: 10px 15px;
+        font-size: 16px;
+        display: block;
+    }
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .cake-options,
+    .product-grid {
+        gap: 10px;
+    }
+    .cake-type {
+        width: 200px;
+        height: 300px;
+    }
+    .product-card {
+        width: 180px;
+    }
+    .basket {
+        top: 50px;
+    }
+    body {
+        padding: 10px;
+    }
+    .cart-sidebar {
+        display: none;
+    }
+    .cart-button {
+        display: block;
     }
 }
